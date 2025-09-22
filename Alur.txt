@@ -1,0 +1,35 @@
+fitur tambah pasien
+1. Tambah pasien
+    - html
+2. Form di isi
+    - html js
+3. Submit click
+    -html, js
+4. Fetch ajax
+    -js
+5. Data di tangkap di backend
+    -db
+    -validasi payload
+6. Query insert db
+    - PHP, db
+
+
+
+fe trigger input
+validasi input
+build payload
+hit api / sent data to backend
+capture & validasi 
+proses/olah
+callback response json (mengembalikan ke fe)
+build response (mengolah response jadi tapilan)
+
+
+
+capture payload
+
+
+validasi data 
+
+
+insert database
