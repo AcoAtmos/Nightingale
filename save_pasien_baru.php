@@ -1,8 +1,9 @@
 <?php
 // <!-- capture payload -->
-$json =file_get_contents('php://input');
-$data = json_decode('$json,1');
+echo $json =file_get_contents('php://input');
+$data = json_decode($json,1);
 
+echo $data['nama'];
 // <!-- validasi data  -->
 $err =false;
 $msg ='';
@@ -24,12 +25,12 @@ if(!isset($data['alamat_pasien']) or $data['alamat_pasien']==''){
     $msg.='alamat wajib di isi';
 }
 
-// <!-- insert database -->
+
 //     <!-- konek ke database -->
-$host='localhost';
+$host='127.0.0.1';
 $user='root';
-$pass='';
-$db_name='database_antrian';
+$pass='Mysql170338';
+$db_name='data_rumah_sakit';
 
 $con=mysqli_connect($host,$user,$pass,$db_name);
 
@@ -37,4 +38,21 @@ if(!$con){
     echo 'koneksi gagal';
     die();
 }
-echo "koneksi berhasil";
+// echo "koneksi berhasil";
+
+//insert Database 
+$nama =$data['nama'];
+$no_telp = $data['no_telp'];
+$tgl_lahir = $data['tanggal_lahir'];
+$alamat = $data['alamat'];
+$jenis_kelamin = $data['jenis_kelamin'];
+$sql ="insert into data_pasien(nama,no_telp,tanggal_lahir,alamat,jenis_kelamin) values('$nama','$no_telp','$tgl_lahir','$alamat','$jenis_kelamin')";
+
+$query = mysqli_query($con,$sql);
+
+if ($query){
+    echo "Data berhasil di simpan";
+}else{
+    echo "Data gagal di simpan";
+}
+mysqli_close($con);
