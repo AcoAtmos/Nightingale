@@ -25,6 +25,7 @@ if(!isset($data['alamat_pasien']) or $data['alamat_pasien']==''){
     $msg.='alamat wajib di isi';
 }
 
+if ($err)
 
 //     <!-- konek ke database -->
 $host='127.0.0.1';
@@ -51,8 +52,14 @@ $sql ="insert into data_pasien(nama,no_telp,tanggal_lahir,alamat,jenis_kelamin) 
 $query = mysqli_query($con,$sql);
 
 if ($query){
-    echo "Data berhasil di simpan";
+    $response['status']='sucsess';
+    $response['message']='data behasil di simpan';
+    http_response_code(200);
+
 }else{
-    echo "Data gagal di simpan";
+    $response ['status']='gagal';
+    $response['message']='data gagal di simpan';
+    http_response_code(500);
+    
 }
 mysqli_close($con);
