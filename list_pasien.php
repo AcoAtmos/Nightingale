@@ -1,15 +1,16 @@
 <?php
+// menerima data (batasan list yang harus di tampilkan)
 $json = file_get_contents('php://input');
 $data = json_decode($json,1);
 
-// koneksi ke database
+// data server
 $host='127.0.0.1';
 $user='root';
 $pass='Mysql170338';
 $db_name='data_rumah_sakit';
-
+// menghubbungkan dengan server
 $con=mysqli_connect($host,$user,$pass,$db_name);
-
+// validasi
 if(!$con){
     echo 'koneksi gagal';
     die();
@@ -19,7 +20,7 @@ $page = $data['page'];
 $limit = $data['limit'];
 
 
-//insert Database 
+// sytax sql  
 $sql = "select * from data_pasien limit $page, $limit";
 
 $query = mysqli_query($con,$sql);

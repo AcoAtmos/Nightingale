@@ -1,15 +1,19 @@
+
+// proses  menampilkan data list ke dalam html dari database
+  // memunculkan data saaat halaman terbuka (memanggil fungsi untuk me list pasien)
 document.addEventListener('DOMContentLoaded',function(){
     console.log('dfasd');
     list_pasien();
 })
 
-
+  // fungsi untuk memunculkan list pasien
 function list_pasien(){
+    // membatasi data yang di ambil
     req_body={
         page:1,
-        limit:30
+        limit:5
     }
-
+    // mengirim limit data ke php 
     fetch(`list_pasien.php`, {
             method: 'POST',
             headers: {
@@ -31,23 +35,14 @@ function list_pasien(){
                         <div class="flex items-center text-sm">
                           <!-- Avatar with inset shadow -->
                           <div>
-                            <p class="font-semibold">3.</p>
+                            <p class="font-semibold" id="${v.id}">${v.id}</p></p>
                             
                           </div>
                         </div>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
-                          <!-- Avatar with inset shadow -->
-                          <div
-                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                          >
-                            <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;facepad=3&amp;fit=facearea&amp;s=707b9c33066bf8808c934c8ab394dff6" alt="" loading="lazy">
-                            <div
-                              class="absolute inset-0 rounded-full shadow-inner"
-                              aria-hidden="true"
-                            ></div>
-                          </div>
+
                           <div>
                             <p class="font-semibold">${v.nama}</p>
                             <p class="text-xs text-gray-600 dark:text-gray-400">
@@ -79,7 +74,7 @@ function list_pasien(){
                               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                             </svg>
                           </button>
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete" onclick= "delete_pasien(${v.id})">
                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                               <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                             </svg>
@@ -95,7 +90,27 @@ function list_pasien(){
         });
 }
 
+function delete_pasien(id){
+  if(confirm('apa anda yakin akan menghapus data ini? ')){
+    fetch(`deletePasien.php?id=${id}`, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json; charset=UTF-8'
+      }
+    }).then(response =>{
+      if(response.ok){
+        response.text().then(response => {
+          console.log(response);
+          let r = JSON.parse(response);
+          alert(r.message);
+          
+        })
+      }
+    })
+  }
+}
 
+//  proses menyimpan dat pasien baru
     function simpan_data_pasien_baru(){
          
         let nama_pasien=document.querySelector('.form_pasien_baru .nama_pasien').value;
