@@ -15,7 +15,7 @@
 
 
     <script src="fungsi_simpan_baru.js" defer></script>
-    
+
     <!-- Punya dashboard -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
@@ -38,7 +38,7 @@
     <script src="./assets/js/charts-lines.js" defer></script>
     <script src="./assets/js/charts-pie.js" defer></script>
 
-
+   
     <style>
         .posisi-text{
             padding-left: 140px;

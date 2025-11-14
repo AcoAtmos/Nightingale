@@ -16,12 +16,12 @@ if(!$con){
     die();
 }
 
-$page = $data['page'];
+// $page = $data['page'];
 $limit = $data['limit'];
 
 
 // sytax sql  
-$sql = "select * from data_pasien limit $page, $limit";
+$sql = "select * from data_pasien limit $limit";
 
 $query = mysqli_query($con,$sql);
 

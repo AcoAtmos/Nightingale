@@ -657,7 +657,7 @@
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
+                          <button  class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
                             </svg>
@@ -952,7 +952,6 @@
 
               <!-- Modal body -->
               <div class="form_pasien_baru">
-
                 <div class="mt-4 mb-6">
                   <!-- Modal title -->
                   <p
@@ -1027,11 +1026,50 @@
                       </button>
                   </footer>
                 </div>
-              
               </div>
+
+
         </div>
       </div>
     </div>
+
+        <!-- modal edit -->
+    <div id="modal_edit_pasien" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+      <div class="dark:bg-gray-800 w-[380px] rounded-lg shadow-xl p-6">
+        
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Edit Data Pasien</h2>
+          <button class="text-gray-700 dark:text-gray-300" onclick="closeEditModal()">✕</button>
+        </div>
+
+        <!-- id di sembunyikan -->
+        <input type="hidden" class="edit_id">
+
+        <label class="text-sm font-semibold">Nama Lengkap</label>
+        <input type="text" class="edit_nama w-full border rounded px-3 py-2 mb-3">
+
+        <label class="text-sm font-semibold">No. Telepon</label>
+        <input type="text" class="edit_telp w-full border rounded px-3 py-2 mb-3">
+
+        <label class="text-sm font-semibold">Tanggal Lahir</label>
+        <input type="date" class="edit_tgl w-full border rounded px-3 py-2 mb-3">
+
+        <label class="text-sm font-semibold">Alamat</label>
+        <textarea class="edit_alamat w-full border rounded px-3 py-2 mb-3"></textarea>
+
+        <label class="text-sm font-semibold block text-gray-700 dark:text-gray-300">Jenis Kelamin</label>
+        <div class="flex gap-6 mb-4">
+          <label class="text-gray-700 dark:text-gray-300"  ><input type="radio" name="edit_jk" value="laki-laki"> Laki-laki</label>
+          <label class="text-gray-700 dark:text-gray-300"  ><input type="radio" name="edit_jk" value="perempuan"> Perempuan</label>
+        </div>
+
+        <button onclick="simpanPerubahanPasien()"
+          class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg">
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+
     <!-- Notification_add_patient -->
 
   </body>
