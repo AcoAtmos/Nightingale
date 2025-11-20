@@ -1,0 +1,2 @@
+- link verivikasi harus di enkripsi
+- link verivikasi jangan bertahan lama lama
