@@ -3,7 +3,6 @@
 $id =$_GET['id'];
 //validasi payload
 
-
 if (!isset($_GET['id']) or $_GET['id'] == ''){
     die('id not valid');
 }
