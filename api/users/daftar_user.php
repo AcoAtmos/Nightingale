@@ -49,7 +49,8 @@ values
 
 $query = mysqli_query($con,$sql);
 
-
+// ambil id user setelah di simpan 
+$id = mysqli_insert_id($con);
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 require_once './PHPMailer-master/src/PHPMailer.php';
@@ -89,9 +90,13 @@ try {
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content
+        $link_aktivasi = "http://localhost/Belajar_kelas/Mas_usman/Nightingale/api/users/terverivikasi/terverivikasi.html?id=$id";
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Here is the subject';
-    $mail->Body    = '<a href="http://localhost/Belajar_kelas/Mas_usman/Nightingale/api/users/aktivasi_patch/verivikasi.html?id=" > <b>in bold!</b> </a> ';
+    $mail->Body    = "
+    <p>halo,$nama_lengkap</p>
+    <p>Silahkan klik link ini untuk mengaktifkan akun ada : <a href='$link_aktivasi'> klik disini</a> </p>
+    ";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

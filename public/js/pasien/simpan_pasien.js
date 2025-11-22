@@ -61,7 +61,7 @@ function tambah_pasien(){
           if (response.ok) {
             response.text().then(response => {
               console.log(response);
-             alert("data berhasil disimpan");
+              alert("data berhasil disimpan");
               document.querySelector('.form_pasien_baru .closeModal').click();
               list_pasien();
 

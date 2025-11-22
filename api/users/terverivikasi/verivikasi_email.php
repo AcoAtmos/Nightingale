@@ -1,8 +1,8 @@
 <?php
 //capture payload
-$id =$_GET['id'];
-//validasi payload
+$id = $_GET['id'];
 
+//validasi payload
 if (!isset($_GET['id']) or $_GET['id'] == ''){
     die('id not valid');
 }
@@ -12,16 +12,16 @@ if(strpos($_GET['id'], "'") == true or strpos($_GET['id'], '"')==true or strpos(
 }
 
 //koneksi db
-require_once __DIR__ . '/../../config/db.php';
+require_once __DIR__ . '/../../../config/db.php';
 
 // query update aktivasi
-$sql = "update users set status_akun 'aktif' where id='$id' ";
+$sql = "update users set status_akun = 'aktif' where id=$id ";
 $query = mysqli_query($con,$sql);
 
 //notifikasi user
 if ($query){
     $response['status']='sucsess';
-    $response['data']= ;
+    $response['data']= 'data behasil di verivikasi'; ;
     http_response_code(200);
 
 }else{
