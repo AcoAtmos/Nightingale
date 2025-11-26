@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <form id="loginForm" class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm space-y-4">
+    <h1 class="text-xl font-semibold text-center text-gray-700">Login</h1>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-600">Username</label>
+      <input
+        type="text"
+        name="username"
+        required
+        class="mt-1 w-full border px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+        placeholder="Masukkan username"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-600">Password</label>
+      <input
+        type="password"
+        name="password"
+        required
+        class="mt-1 w-full border px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+        placeholder="Masukkan password"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+    >
+      Masuk
+    </button>
+  </form>
+
+  <script>
+    // menangkap data form saat login
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // mencegah reload
+
+      const username = e.target.username.value.trim();
+      const password = e.target.password.value;
+
+      console.log("Username:", username);
+      console.log("Password:", password);
+
+      // contoh alert, nanti bisa ganti ke fetch() backend
+      alert("Data terkirim:\nUsername: " + username + "\nPassword: " + password);
+
+    //   jika mau pakai fetch:
+      fetch("../api/users/login.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({username, password})
+      })
+      .then(res => res.json())
+      .then(data => console.log(data));
+    });
+  </script>
+
+</body>
+</html>

@@ -29,7 +29,9 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        // notifikasi 
+        import { notifikasi } from '../../../public/js/utility/notifikasi.js';
         // Ambil ID dari URL
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
@@ -49,12 +51,13 @@
                 if(response.ok){
                     response.text().then(
                         statusBox.innerHTML = "<span class='text-green-500 font-semibold'>Akun berhasil diverifikasi!</span>",
-                        p.innerHTML = "<p>Akun Anda telah berhasil diverifikasi. Anda dapat menutup halaman ini dan melanjutkan ke aplikasi.</p>"
+                        p.innerHTML = "<p>Akun Anda telah berhasil diverifikasi. Anda dapat menutup halaman ini dan melanjutkan ke aplikasi.</p>",
                     );
                 }
             });
 
         }
+
     </script>
 
 </body>

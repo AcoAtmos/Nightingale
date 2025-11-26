@@ -38,6 +38,7 @@
 .invalid i{
     color: yellow;
 }
+
 .toast::after{
     content: '';
     width: 100%;
