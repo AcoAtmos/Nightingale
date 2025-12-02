@@ -8,3 +8,4 @@ umumnya modular itu di bagi jadi 3 (MVC) :
     terkadang untuk js,css, font, image ,dll
     - assets
     - config (untuk pengaturan dll )
+Dalam menggunakan modulatr ketika membuka url akan selalu di arahkan ke index.php yang nati di sana akan di rootign menuju kemana url itu

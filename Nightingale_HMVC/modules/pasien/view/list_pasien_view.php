@@ -9,7 +9,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
   <head>
-    <?php include ("layout/head_master_pasien.php")?>
+    
+    <?php include ("./common/view/layout/head_master_pasien.php")?>
+    <?php include ("css_js.php");?>
   </head>
   <body>
     <div
@@ -17,7 +19,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
       :class="{ 'overflow-hidden': isSideMenuOpen}"
     >
       <!-- Desktop sidebar -->
-      <?php include ("layout/left_menu.php")?>
+      <?php include ("./common/view/layout/left_menu.php")?>
       <!-- Mobile sidebar -->
       <!-- Backdrop -->
       <div
@@ -469,7 +471,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
                 >
                   <img
                     class="object-cover w-8 h-8 rounded-full"
-                    src="assets/img/user.png"
+                    src="assets/images/user.png"
                     alt=""
                     aria-hidden="true"
                   />
@@ -633,7 +635,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
                           >
                             <img
                               class="object-cover w-full h-full rounded-full"
-                              src="assets/img/Gibran-ruang-publik.jpg"
+                              src="assets/images/Gibran-ruang-publik.jpg"
                               alt=""
                               loading="lazy"
                             />

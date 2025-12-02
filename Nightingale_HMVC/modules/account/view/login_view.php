@@ -53,19 +53,23 @@
       alert("Data terkirim:\nUsername: " + username + "\nPassword: " + pass);
       console.log({username, pass});
       //   jika mau pakai fetch:
-        fetch("../api/users/login.php", {
+        fetch("index.php?module=login_proses", {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({username, pass})
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-  
-        if(data.status === "success"){
-        window.location.href = "./master_pasien.php"; // redirect
-        } else {
+        .then(data => {
+          console.log(data); // cek data response
+
+          if (data.status === 'success') {
+            window.location.href = "index.php?module=pasien_view";
+          } else {
             alert(data.message);
-        }
+          }
+        })
+        .catch(error => console.error(error));
+
     });
   </script>
 

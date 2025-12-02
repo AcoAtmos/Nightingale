@@ -19,5 +19,7 @@ if(!isset($data['alamat_pasien']) or $data['alamat_pasien']==''){
     $msg.='alamat wajib di isi';
 }
 
-if ($err)
+if ($err){
+    return $msg
+}
 ?>

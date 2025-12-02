@@ -53,7 +53,8 @@ function notifikasi_css(){
             bottom: 0;
             left: 0;
             background-color: green;
-            animation: anim 4.5s linear forwards;
+            animation: anim 3s linear forwards;
+            border-radius: 0 0 5px 5px;
         }
         .toast.fail::after{
             background-color: red;

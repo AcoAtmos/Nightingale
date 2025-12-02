@@ -66,3 +66,4 @@ function daftar_user(){
         
       return false
 }
+window.daftar_user = daftar_user;
